@@ -26,4 +26,5 @@ sport = getsport()
 event = get_event_details()
 
 
-print ("Hi " + name + " you are planning to  play " + sport +".")
+
+print ("Hi " + name + "," + " you are planning to play " + sport + ".")
