@@ -2,7 +2,8 @@
   <html>
     <head>
       <meta charset="utf-8" />
-      <title>Swim Timer</title>
+      <title>Sports Timer</title>
+      <script src="script.js"></script>
     </head>
     <body>
       <form>
@@ -10,14 +11,20 @@
         <input type="text" id="name" name="name">
         <h2>Event Details</h2>
         <label for="sport">Sport:</label>
-        <select name="sport" id="sport">
+        <select name="sport" id="sport" onchange="select_sport()">
           <option>
             Select a Sport
           </option>
           <option>
             Swimming
           </option>
+          <option>
+            Running
+          </option>
         </select>
+        <div id="swim_form">
+          <input type="number" name="pool_length">
+        </div>
       </form>
     </body>
   </html>
