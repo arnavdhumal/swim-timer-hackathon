@@ -3,4 +3,4 @@ function select_sport() {
     if (sportvalue == "Swimming") {
         document.getElementById("swim_form").style = 'block';
     }
-}
+};
