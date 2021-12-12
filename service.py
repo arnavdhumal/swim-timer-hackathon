@@ -13,4 +13,4 @@ def getsport():
 
 sport = getsport()
 
-print ("hi " + name + " you are planning to  play " + sport )
+print ("Hi " + name + "," + " you are planning to play " + sport + ".")
