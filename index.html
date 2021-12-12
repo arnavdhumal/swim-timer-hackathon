@@ -3,7 +3,9 @@
     <head>
       <meta charset="utf-8" />
       <title>Sports Timer</title>
+
       <script src="script.js"></script>
+
       <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -11,24 +13,31 @@
         <label for="name">Name:</label>
         <input type="text" id="name" name="name">
         <h2>Event Details</h2>
+
         <label for="sport">Sport:</label>
-        <select name="sport" id="sport" onchange="select_sport()">
-          <option>
-            Select a Sport
-          </option>
-          <option>
-            Swimming
-          </option>
-          <option>
-            Running
-          </option>
-        </select>
+          <input type="radio" name="sport" value="Swimming" onchange="select_swim()" /> Swimming
+          <!-- <input type="radio" name="sport" value="Running" onchange="select_sport()"/> Running -->
+        <br>
+
+        <!--Freestyle, Backstroke, Butterfly, Breastroke-->
         <div id="swim_form" style="display: none;">
+
           <label for="pool_length">Pool Length:</label>
           <input type="number" name="pool_length">
           <br>
+
+          <label for="Stroke">Stroke:</label>
+          <input type="radio" name="stroke" value="Freestyle" /> Freestyle
+          <input type="radio" name="stroke" value="Backstroke" /> Breaststroke
+          <input type="radio" name="stroke" value="Butterfly" /> Butterfly 
+          <input type="radio" name="stroke" value="Backstroke" /> Backstroke 
+
+
+          <br>
           <button onclick="start(); return false">Start</button>
+
           <button onclick="lap(); return false">Lap</button>
+
           <button onclick="stop(); return false">Stop</button>
         </div>
       </form>
