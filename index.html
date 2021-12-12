@@ -26,9 +26,10 @@
         <div id="swim_form" style="display: none;">
           <label for="pool_length">Pool Length:</label>
           <input type="number" name="pool_length">
-          <button onclick="start()">Start</button>
-          <button onclick="lap()">Lap</button>
-          <button onclick="end()">End</button>
+          <br>
+          <button onclick="start(); return false">Start</button>
+          <button onclick="lap(); return false">Lap</button>
+          <button onclick="stop(); return false">Stop</button>
         </div>
       </form>
     </body>
