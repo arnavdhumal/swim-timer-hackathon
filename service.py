@@ -57,6 +57,13 @@ def get_events():
   #   print (row)
 
 
+def get_averages():
+  cur = conn.cursor()
+  result = cur.execute('SELECT name, sport, sport_type, avg(total_time) FROM sportstimer group by name, sport, sport_type')
+  rows = cur.fetchall()
+  return json.dumps(rows)
+  # for row in rows:
+  #   print (row)
 
 
 
@@ -71,6 +78,10 @@ def get_events():
 @route('/events', method='GET')
 def hello():
   return get_events()
+
+@route('/averages', method='GET')
+def hello():
+  return get_averages()
 
 @route('/events', method='POST')
 def index():
