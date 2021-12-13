@@ -1,4 +1,7 @@
 import sqlite3
+import json
+from bottle import route, run
+
 from sqlite3.dbapi2 import Cursor
 conn = sqlite3.connect('sportstimer.db')
 
@@ -27,12 +30,13 @@ def get_event_details():
 
 
 def save_event():  
+  # mock event , use from webservice
   event = {
     "name": "Ishaan",
     "sport": "swimming",
     "sport_type": "freestyle",
     "pool_length": 25, 
-    "total_time": 4108
+    "total_time": 3208
   }
   # result = conn.execute('INSERT INTO sportstimer VALUES(event["name"], event["sport"], event["sport_type"], event["pool_length"], event["total_time"]')
   result = conn.execute('INSERT INTO sportstimer (name, sport, sport_type, length, total_time) values (?, ?, ?, ?, ?)', (event["name"], event["sport"], event["sport_type"], event["pool_length"], event["total_time"]))
@@ -43,21 +47,27 @@ def save_event():
 
 
 def get_events():
-   cur = conn.cursor()
-   result = conn.execute('SELECT NAME, SPORT, SPORT_TYPE, LENGTH, TOTAL_TIME from sportstimer')
-   rows = cur.fetchall()
-   for row in rows:
-     print (row)
+  cur = conn.cursor()
+  result = cur.execute('SELECT * from sportstimer')
+  rows = cur.fetchall()
+  return json.dumps(rows)
+  # for row in rows:
+  #   print (row)
 
 
 
-get_events()
+
 
 # name = user_details()
 # sport = getsport()
 # event = get_event_details()
-save_event()
+# save_event()
 
 
 # print ("Hi " + name + "," + "
 #  you are planning to play " + sport + ".")
+@route('/events')
+def hello():
+  return get_events()
+
+run(host='localhost', port=8001, debug=True)
