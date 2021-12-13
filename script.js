@@ -38,6 +38,23 @@ function save() {
         sport_type: document.querySelector('input[name="stroke"]:checked').value,
         total_time: total_time_seconds
     };
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        // document.getElementById("demo").innerHTML = this.responseText;
+        console.log(this.responseText)
+    }
+    xhttp.open("POST", "http://localhost:8001/events", true);
+    xhttp.send(event);
     console.log(event)
 }
 
+function getevents() {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function () {
+        // document.getElementById("demo").innerHTML = this.responseText;
+        console.log(this.responseText)
+    }
+    xhttp.open("GET", "http://localhost:8001/events", true);
+    xhttp.send();
+};

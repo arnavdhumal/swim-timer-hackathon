@@ -1,6 +1,8 @@
 import sqlite3
 import json
-from bottle import route, run
+import requests
+from bottle import app, route, run
+from bottle_cors_plugin import cors_plugin
 
 from sqlite3.dbapi2 import Cursor
 conn = sqlite3.connect('sportstimer.db')
@@ -66,8 +68,16 @@ def get_events():
 
 # print ("Hi " + name + "," + "
 #  you are planning to play " + sport + ".")
-@route('/events')
+@route('/events', method='GET')
 def hello():
   return get_events()
+
+@route('/events', method='POST')
+def index():
+  postdata = request.body.read()
+  print(postdata)
+
+app = app()
+app.install(cors_plugin('*'))
 
 run(host='localhost', port=8001, debug=True)
